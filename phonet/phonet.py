@@ -151,7 +151,7 @@ class Phonet:
         modelGRU=keras.Model(inputs=input_data, outputs=out)
         opt=keras.optimizers.Adam(learning_rate=self.lr)
         alphas=list(np.ones(len(self.names))/len(self.names))
-        modelGRU.compile(optimizer=opt, loss='categorical_crossentropy', metrics=['categorical_accuracy'], sample_weight_mode="temporal", loss_weights=alphas)
+        modelGRU.compile(optimizer=opt, loss='categorical_crossentropy', metrics=['categorical_accuracy'], loss_weights=alphas) # sample_weight_mode="temporal" TOQUE ACÁ
         return modelGRU
 
     def get_feat(self, signal, fs):
