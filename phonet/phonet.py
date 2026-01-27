@@ -17,6 +17,7 @@ import matplotlib.pyplot as plt
 plt.rcParams["font.family"] = "Times New Roman"
 
 from scipy.signal import resample_poly
+os.environ["TF_ENABLE_ONEDNN_OPTS"] = "0"
 from tensorflow import keras
 import gc
 from matplotlib import cm
