@@ -17,7 +17,11 @@ import matplotlib.pyplot as plt
 plt.rcParams["font.family"] = "Times New Roman"
 
 from scipy.signal import resample_poly
-os.environ["TF_ENABLE_ONEDNN_OPTS"] = "0"
+# 0 = todos los logs (default)
+# 1 = filtrar INFO
+# 2 = filtrar INFO y WARNING (Recomendado)
+# 3 = filtrar todo menos ERRORES CRÍTICOS
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 from tensorflow import keras
 import gc
 from matplotlib import cm
