@@ -7,8 +7,18 @@ Compute posteriors probabilities of phonological classes from audio files for se
         Faculty of Engineering, University of Antioquia,
         juan.vasquez@fau.de
 """
-
 import os
+import contextlib
+# reduce TF logs (0=all, 1=INFO, 2=WARNING, 3=ERROR)
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
+# disable oneDNN custom ops message (set to '0' to turn them off)
+os.environ['TF_ENABLE_ONEDNN_OPTS'] = '0'
+
+# Optionally hide any early stderr output (including absl message)
+with open(os.devnull, 'w') as fnull:
+    with contextlib.redirect_stderr(fnull):
+        from tensorflow import keras
+
 import numpy as np
 import python_speech_features as pyfeat
 from scipy.io.wavfile import read
@@ -17,12 +27,6 @@ import matplotlib.pyplot as plt
 plt.rcParams["font.family"] = "Times New Roman"
 
 from scipy.signal import resample_poly
-# 0 = todos los logs (default)
-# 1 = filtrar INFO
-# 2 = filtrar INFO y WARNING (Recomendado)
-# 3 = filtrar todo menos ERRORES CRÍTICOS
-os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
-from tensorflow import keras
 import gc
 from matplotlib import cm
 try:
