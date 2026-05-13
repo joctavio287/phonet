@@ -1,5 +1,5 @@
 from pathlib import Path
-from phonet.phonet import Phonet  # type: ignore --> to supress pylance problem
+from ..phonet.phonet import Phonet  # type: ignore --> to supress pylance problem
 from scipy import signal
 import numpy as np
 LEXICON = {
