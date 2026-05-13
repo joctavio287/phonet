@@ -148,12 +148,14 @@ def extract_phonemes(
     fixed_length: int,
     lexicon: dict,
     phonet_obj: Phonet,
+    resampling_function: callable,
     discrete: bool = False
 ) -> np.ndarray:
     posterior_prob = compute_phones(
         audio_signal=audio_signal,
         sample_rate=sample_rate,
         phonet_obj=phonet_obj,
+        resampling_function=resampling_function,
         PLLR=True
     )
     posterior_prob = np.clip(
