@@ -48,9 +48,9 @@ def compute_phones(
     phonet_obj: Phonet,
     audio_signal: np.ndarray,
     sample_rate: int,
+    resampling_function: callable,
     PLLR: bool = False,
-    target_sr: int = 128,
-    resampling_function: callable = None
+    target_sr: int = 128
 ) -> np.ndarray:
     """
     Compute phones from the audio file.
